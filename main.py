@@ -1,24 +1,20 @@
-import numpy as np
-import matplotlib.pyplot as plt 
-from matplotlib.animation import FuncAnimation
-
-
+from vpython import sphere, vector, color, rate, canvas, curve, textures
+import math
 
 #-----------Simulations Values-------------
 
-ray_earth      = 6371  #km
-ray_orbit      = 42164  #km
-angle_step     = 2  #degreed per frame
-frame_interval = 50  #milliseconds
-
+ray_earth      = 6371   # km
+ray_orbit      = 42164  # km
+angle_step     = 0.02   # degreed per frame
+scale          = 1/1000 # scale of visual to 3D
 #-----------Create figure and axes-------------
 
-fig, ax = plt.subplots()
-ax.set_aspect('equal')
-ax.set_xlim(-45000,45000)
-ax.set_ylim(-45000,45000)
-ax.set_title('Satellite simulator orbiting the Earth')
-
+scene = canvas(
+    title = 'Earth Satelites Simulator 3D ',
+    width =4500,
+    height =4500,
+    background = color.black
+)
 
 
 
