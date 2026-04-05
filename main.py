@@ -15,11 +15,14 @@ ray_orbit_visual = ray_orbit * scale #orbit size in scale
 
 scene = canvas(
     title = 'Earth Satelites Simulator 3D ',
-    width  = 4500,
-    height = 4500,
+    width  = 1200,
+    height = 700,
     background = color.black
 )
 
+scene.center = vector(0,0,0)
+scene.range = ray_orbit_visual * 1.3
+scene.forward = vector(0,0,-1)
 
 
 
@@ -37,13 +40,13 @@ earth = sphere(
 
 #-----------Orbit-------------
 
-orbit_path = curve(color=color.white, radius=0.02)
+orbit_path = curve(color=color.white, radius=0.03)
 
 for angle in range(0, 361, 2):
     theta = math.radians(angle)
     x = ray_orbit_visual * math.cos(theta)
-    z = ray_orbit_visual * math.sin(theta) 
-    orbit_path.append(vector(x,0,z))
+    y = ray_orbit_visual * math.sin(theta) 
+    orbit_path.append(vector(x,y,0))
 
 
 
@@ -52,7 +55,7 @@ for angle in range(0, 361, 2):
 
 satelite = sphere(
     pos= vector(ray_orbit_visual,0,0),
-    radius = 0.18,
+    radius = 0.3,
     color=color.red,
     make_trail=False
 )
@@ -77,9 +80,9 @@ while True:
     rate(100)
 
     x = ray_orbit_visual * math.cos(theta)
-    z = ray_orbit_visual * math.sin(theta) 
+    y = ray_orbit_visual * math.sin(theta) 
 
-    satelite.pos = vector(x,0,z)
+    satelite.pos = vector(x,y,0)
     theta += angle_step
 
     
